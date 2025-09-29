@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <!-- Background -->
+  <rect width="512" height="512" fill="#2196F3" rx="64"/>
+
+  <!-- Checklist Icon -->
+  <g fill="#ffffff" stroke="#ffffff" stroke-width="2">
+    <!-- Lista de tarefas -->
+    <rect x="128" y="128" width="256" height="32" rx="4"/>
+    <rect x="128" y="184" width="256" height="32" rx="4"/>
+    <rect x="128" y="240" width="200" height="32" rx="4"/>
+    <rect x="128" y="296" width="160" height="32" rx="4"/>
+
+    <!-- Checkboxes -->
+    <circle cx="96" cy="144" r="12"/>
+    <circle cx="96" cy="200" r="12"/>
+    <circle cx="96" cy="256" r="12"/>
+    <circle cx="96" cy="312" r="12"/>
+
+    <!-- Check marks -->
+    <path d="M88 200l4 4 8-8" stroke-width="3" fill="none"/>
+    <path d="M88 256l4 4 8-8" stroke-width="3" fill="none"/>
+  </g>
+
+  <!-- PWA text -->
+  <text x="256" y="420" text-anchor="middle" fill="#ffffff" font-family="Arial, sans-serif" font-size="48" font-weight="bold">PWA</text>
+</svg>
