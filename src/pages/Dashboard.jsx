@@ -38,7 +38,6 @@ const Dashboard = () => {
         })
       })
       setTasks(tasksArray)
-      console.log(`✅ Dashboard: ${tasksArray.length} tarefas carregadas`)
     }, (error) => {
       console.error('Dashboard error:', error)
       setTasks([])
@@ -150,7 +149,7 @@ const Dashboard = () => {
               <svg className="w-5 h-5 text-green-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
-              Tarefas Concluídas ✅
+              Tarefas Concluídas 
             </h3>
             <div className="space-y-2">
               {sortedCompletedTasks.map((task) => (
@@ -171,7 +170,7 @@ const Dashboard = () => {
               <svg className="w-5 h-5 text-orange-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
-              Tarefas Pendentes ⏳
+              Tarefas Pendentes 
             </h3>
             <div className="space-y-2">
               {sortedPendingTasks.map((task) => (

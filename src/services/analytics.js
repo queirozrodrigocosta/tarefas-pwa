@@ -7,7 +7,6 @@ export const trackEvent = (eventName, parameters = {}) => {
     if (window.gtag) {
       window.gtag('event', eventName, parameters)
     }
-    console.log('Event tracked:', eventName, parameters)
   } catch (error) {
     console.warn('Analytics tracking error:', error)
   }

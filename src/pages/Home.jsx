@@ -31,18 +31,14 @@ const Home = () => {
   useEffect(() => {
     if (!user) return
 
-    // Get today's date in YYYY-MM-DD format
     const today = new Date().toISOString().split('T')[0]
 
-    // ✅ QUERY SIMPLIFICADA - SEM ORDERBY PARA EVITAR ÍNDICE
     const q = query(
       collection(db, 'tasks'),
       where('userId', '==', user.uid),
       where('date', '==', today)
-      // Removido orderBy - vamos ordenar no JavaScript
     )
 
-    // Listen for real-time updates
     const unsubscribe = onSnapshot(q, (querySnapshot) => {
       const tasksArray = []
       querySnapshot.forEach((doc) => {
@@ -52,7 +48,6 @@ const Home = () => {
         })
       })
 
-      // ✅ ORDENAR NO JAVASCRIPT EM VEZ DE NO FIRESTORE
       tasksArray.sort((a, b) => {
         const timeA = a.time || '00:00'
         const timeB = b.time || '00:00'
@@ -60,10 +55,8 @@ const Home = () => {
       })
 
       setTasks(tasksArray)
-      console.log(`✅ Carregadas ${tasksArray.length} tarefas do dia ${today}`)
     }, (error) => {
       console.error('Error fetching tasks:', error)
-      // ✅ FALLBACK: Se der erro, mostrar array vazio
       setTasks([])
     })
 
@@ -77,7 +70,6 @@ const Home = () => {
       setLoading(true)
       const today = new Date().toISOString().split('T')[0]
 
-      console.log('📝 Adicionando tarefa:', { title, time, today, userId: user.uid })
 
       await addDoc(collection(db, 'tasks'), {
         title,
@@ -88,7 +80,6 @@ const Home = () => {
         createdAt: serverTimestamp()
       })
 
-      console.log('✅ Tarefa adicionada com sucesso!')
       trackTaskAdded()
     } catch (error) {
       console.error('Error adding task:', error)
@@ -112,7 +103,6 @@ const Home = () => {
         trackTaskCompleted()
       }
 
-      console.log(`✅ Tarefa ${task.completed ? 'desmarcada' : 'marcada'} como concluída`)
     } catch (error) {
       console.error('Error updating task:', error)
       alert('Erro ao atualizar tarefa: ' + error.message)
@@ -128,9 +118,7 @@ const Home = () => {
       setLoading(true)
       await deleteDoc(doc(db, 'tasks', taskId))
       trackTaskDeleted()
-      console.log('✅ Tarefa deletada com sucesso!')
     } catch (error) {
-      console.error('Error deleting task:', error)
       alert('Erro ao deletar tarefa: ' + error.message)
     } finally {
       setLoading(false)
@@ -205,7 +193,7 @@ const Home = () => {
               onClick={() => navigate('/dashboard')}
               className="w-full bg-green-600 text-white py-3 px-4 rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500"
             >
-              📊 Ver Dashboard ({totalTasks} tarefas)
+              Ver Dashboard ({totalTasks} tarefas)
             </button>
           </div>
         )}
